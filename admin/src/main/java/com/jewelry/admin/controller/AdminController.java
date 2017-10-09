@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Controller
 public class AdminController {
