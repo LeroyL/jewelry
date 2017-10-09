@@ -1,0 +1,5 @@
+rootProject.name = 'jewelry'
+include 'client'
+include 'admin'
+include 'core'
+
