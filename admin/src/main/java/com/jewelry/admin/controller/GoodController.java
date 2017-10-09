@@ -141,7 +141,7 @@ public class GoodController {
         int code = -1;
         String message = "保存失败";
         List<GoodsFieldEntity> fieldEntities = null;
-        //TODO
+        //TODO：商品参数保存
         return new ResultBean<>(code, message, fieldEntities);
     }
 
