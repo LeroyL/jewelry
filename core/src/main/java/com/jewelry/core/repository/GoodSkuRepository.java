@@ -11,4 +11,6 @@ import java.util.List;
 public interface GoodSkuRepository extends JpaRepository<GoodSkuEntity, Integer> {
 
     List<GoodSkuEntity> findByGoodId(int goodId);
+
+    void deleteByGoodId(int goodId);
 }

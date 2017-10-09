@@ -11,4 +11,6 @@ import java.util.List;
 public interface GoodsImageRepostitory extends JpaRepository<GoodsImageEntity, Integer> {
 
     List<GoodsImageEntity> findByGid(int goodId);
+
+    void deleteByGid(int goodId);
 }

@@ -53,4 +53,9 @@ public class GoodSkuServiceImpl implements GoodSkuService {
     public List<GoodSkuEntity> findByGoodId(int goodId) {
         return goodSkuRepository.findByGoodId(goodId);
     }
+
+    @Override
+    public void deleteByGoodId(int goodId) {
+        goodSkuRepository.deleteByGoodId(goodId);
+    }
 }

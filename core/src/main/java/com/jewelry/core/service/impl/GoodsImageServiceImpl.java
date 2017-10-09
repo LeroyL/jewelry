@@ -53,4 +53,9 @@ public class GoodsImageServiceImpl implements GoodsImageService {
     public List<GoodsImageEntity> findByGoodId(int goodId) {
         return goodsImageRepostitory.findByGid(goodId);
     }
+
+    @Override
+    public void deleteByGoodId(int goodId) {
+        goodsImageRepostitory.deleteByGid(goodId);
+    }
 }

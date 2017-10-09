@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface GoodsImageService extends BaseService<GoodsImageEntity> {
     List<GoodsImageEntity> findByGoodId(int goodId);
+
+    void deleteByGoodId(int goodId);
 }

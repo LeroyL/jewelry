@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface GoodsFieldService extends BaseService<GoodsFieldEntity> {
     List<GoodsFieldEntity> findByGoodId(int goodId);
+
+    void deleteByGoodId(int goodId);
 }

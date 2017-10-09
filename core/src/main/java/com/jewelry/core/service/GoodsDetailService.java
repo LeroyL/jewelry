@@ -7,4 +7,6 @@ import com.jewelry.core.entity.GoodsDetailEntity;
  */
 public interface GoodsDetailService extends BaseService<GoodsDetailEntity> {
     GoodsDetailEntity findByGoodId(int goodId);
+
+    void deleteByGoodId(int goodId);
 }

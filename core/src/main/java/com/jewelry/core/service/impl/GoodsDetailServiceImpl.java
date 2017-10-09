@@ -54,4 +54,9 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
         List<GoodsDetailEntity> entities = goodsDetailRepository.findByGid(goodId);
         return entities.isEmpty() ? null : entities.get(0);
     }
+
+    @Override
+    public void deleteByGoodId(int goodId) {
+        goodsDetailRepository.deleteByGid(goodId);
+    }
 }

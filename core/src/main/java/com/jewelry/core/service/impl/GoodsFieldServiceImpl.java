@@ -53,4 +53,9 @@ public class GoodsFieldServiceImpl implements GoodsFieldService {
     public List<GoodsFieldEntity> findByGoodId(int goodId) {
         return goodsFieldRepository.findByGid(goodId);
     }
+
+    @Override
+    public void deleteByGoodId(int goodId) {
+        goodsFieldRepository.deleteByGid(goodId);
+    }
 }

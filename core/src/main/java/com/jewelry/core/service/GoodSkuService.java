@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface GoodSkuService extends BaseService<GoodSkuEntity> {
     List<GoodSkuEntity> findByGoodId(int goodId);
+
+    void deleteByGoodId(int goodId);
 }

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -134,5 +136,64 @@ public class GoodController {
         return new ResultBean<>(code, message, entity);
     }
 
+    @PostMapping("/field/add")
+    public ResultBean<List<GoodsFieldEntity>> addField(HttpServletRequest request, int goodId){
+        int code = -1;
+        String message = "保存失败";
+        List<GoodsFieldEntity> fieldEntities = null;
+        //TODO
+        return new ResultBean<>(code, message, fieldEntities);
+    }
 
+    @PostMapping("/sku/add")
+    public ResultBean<GoodSkuEntity> addSKU(GoodSkuEntity entity){
+        GoodSkuEntity skuEntity = goodSkuService.save(entity);
+        return new ResultBean<>(0, "保存成功", skuEntity);
+    }
+
+    @PostMapping("/update")
+    public ResultBean<GoodsEntity> update(GoodsEntity goodsEntity) {
+        GoodsEntity entity = goodsService.save(goodsEntity);
+        ResultBean<GoodsEntity> resultBean = new ResultBean<>(0, "保存成功", entity);
+        return resultBean;
+    }
+
+    @PostMapping("/image/update")
+    public ResultBean<List<GoodsImageEntity>> updateImage(GoodsImageEntity[] entities){
+        List<GoodsImageEntity> imageEntities = goodsImageService.batchSave(Arrays.asList(entities));
+        return new ResultBean<>(0, "保存成功", imageEntities);
+    }
+
+    @PostMapping("/detail/update")
+    public ResultBean<GoodsDetailEntity> updateDetail(GoodsDetailEntity entity){
+        GoodsDetailEntity detailEntity = goodsDetailService.save(entity);
+        return new ResultBean<>(0, "保存成功", detailEntity);
+    }
+
+    @PostMapping("/field/update")
+    public ResultBean<List<GoodsFieldEntity>> updateField(GoodsFieldEntity[] entities){
+        List<GoodsFieldEntity> fieldEntities = goodsFieldService.batchSave(Arrays.asList(entities));
+        return new ResultBean<>(0, "保存成功", fieldEntities);
+    }
+
+    @PostMapping("/sku/update")
+    public ResultBean<GoodSkuEntity> updateSKU(GoodSkuEntity entity){
+        GoodSkuEntity skuEntity = goodSkuService.save(entity);
+        return new ResultBean<>(0, "保存成功", skuEntity);
+    }
+
+    @PostMapping("/delete")
+    public ResultBean delete(int goodId){
+        //TODO: 删除前要先校验商品是否已下架
+        GoodsEntity good = goodsService.findOne(goodId);
+        if(good.getStatus() == 1){
+            return new ResultBean(-1, "只能删除已下架的商品");
+        }
+        goodSkuService.deleteByGoodId(goodId);
+        goodsFieldService.deleteByGoodId(goodId);
+        goodsDetailService.deleteByGoodId(goodId);
+        goodsImageService.deleteByGoodId(goodId);
+        goodsService.delete(goodId);
+        return new ResultBean(0, "删除成功");
+    }
 }

@@ -11,4 +11,6 @@ import java.util.List;
 public interface GoodsDetailRepository extends JpaRepository<GoodsDetailEntity, Integer> {
 
     List<GoodsDetailEntity> findByGid(int goodId);
+
+    void deleteByGid(int goodId);
 }

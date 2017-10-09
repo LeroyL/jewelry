@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		"com.jewelry.core.repository"
 })
 @SpringBootApplication(scanBasePackages = {
-		"com.jewelry.core.service",
+		"com.jewelry.core.service.impl",
 		"com.jewelry.admin.service",
 		"com.jewelry.admin.controller"
 })
