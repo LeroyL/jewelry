@@ -48,4 +48,9 @@ public class UserAddressServiceImpl implements UserAddressService {
     public List<UserAddressEntity> batchSave(List<UserAddressEntity> entities) {
         return userAddressRepository.save(entities);
     }
+
+    @Override
+    public List<UserAddressEntity> findByUserId(int userId) {
+        return userAddressRepository.findByUserId(userId);
+    }
 }

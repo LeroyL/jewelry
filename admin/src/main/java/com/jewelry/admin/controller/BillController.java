@@ -21,8 +21,8 @@ public class BillController {
     private BillsService billsService;
 
     @GetMapping("/find")
-    public ResultBean<BillsEntity> find(int orderId){
-        BillsEntity entity = billsService.findOne(orderId);
+    public ResultBean<BillsEntity> find(int billId){
+        BillsEntity entity = billsService.findOne(billId);
         return new ResultBean<>(0, "查询完成", entity);
     }
 
