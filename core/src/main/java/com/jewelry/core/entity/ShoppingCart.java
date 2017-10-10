@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "shopping_cart", schema = "smart_mall")
-public class ShoppingCartEntity {
+public class ShoppingCart {
     private int id;
     private Integer userId;
     private Integer shopId;
@@ -81,7 +81,7 @@ public class ShoppingCartEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShoppingCartEntity that = (ShoppingCartEntity) o;
+        ShoppingCart that = (ShoppingCart) o;
 
         if (id != that.id) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;

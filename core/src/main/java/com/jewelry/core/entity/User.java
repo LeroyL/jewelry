@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "users", schema = "smart_mall")
-public class UsersEntity {
+public class User {
     private int id;
     private String account;
     private String password;
@@ -115,7 +115,7 @@ public class UsersEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UsersEntity that = (UsersEntity) o;
+        User that = (User) o;
 
         if (id != that.id) return false;
         if (account != null ? !account.equals(that.account) : that.account != null) return false;

@@ -1,7 +1,7 @@
 package com.jewelry.admin.controller;
 
 import com.jewelry.admin.model.ResultBean;
-import com.jewelry.core.entity.CommissionEntity;
+import com.jewelry.core.entity.Commission;
 import com.jewelry.core.service.CommissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,12 +21,12 @@ public class CommissionController {
     private CommissionService commissionService;
 
     @GetMapping("/findOne")
-    public ResultBean<CommissionEntity> get(int id){
-        CommissionEntity commissionEntity = commissionService.findOne(id);
-        ResultBean<CommissionEntity> resultBean = new ResultBean<>();
-        if(commissionEntity != null){
+    public ResultBean<Commission> get(int id){
+        Commission commission = commissionService.findOne(id);
+        ResultBean<Commission> resultBean = new ResultBean<>();
+        if(commission != null){
             resultBean.setCode(0);
-            resultBean.setData(commissionEntity);
+            resultBean.setData(commission);
             resultBean.setMessage("查询成功！");
         } else {
             resultBean.setCode(-1);
@@ -36,9 +36,9 @@ public class CommissionController {
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<CommissionEntity>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
-        Page<CommissionEntity> entityPage = commissionService.findAll(pageable);
-        ResultBean<Page<CommissionEntity>> resultBean = new ResultBean<>();
+    public ResultBean<Page<Commission>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+        Page<Commission> entityPage = commissionService.findAll(pageable);
+        ResultBean<Page<Commission>> resultBean = new ResultBean<>();
         resultBean.setCode(0);
         resultBean.setMessage("查询结束！");
         resultBean.setData(entityPage);
@@ -46,11 +46,11 @@ public class CommissionController {
     }
 
     @PostMapping("/add")
-    public ResultBean<CommissionEntity> add(CommissionEntity entity){
-        CommissionEntity commissionEntity = commissionService.save(entity);
-        ResultBean<CommissionEntity> resultBean = new ResultBean<>();
+    public ResultBean<Commission> add(Commission entity){
+        Commission commission = commissionService.save(entity);
+        ResultBean<Commission> resultBean = new ResultBean<>();
         resultBean.setCode(0);
-        resultBean.setData(commissionEntity);
+        resultBean.setData(commission);
         resultBean.setMessage("添加成功！");
         return resultBean;
     }
@@ -69,9 +69,9 @@ public class CommissionController {
     }
 
     @PostMapping("/update")
-    public ResultBean<CommissionEntity> update(CommissionEntity entity){
-        CommissionEntity commissionEntity = commissionService.save(entity);
-        ResultBean<CommissionEntity> resultBean = new ResultBean<>(0, "更新成功", commissionEntity);
+    public ResultBean<Commission> update(Commission entity){
+        Commission commission = commissionService.save(entity);
+        ResultBean<Commission> resultBean = new ResultBean<>(0, "更新成功", commission);
         return resultBean;
     }
 }

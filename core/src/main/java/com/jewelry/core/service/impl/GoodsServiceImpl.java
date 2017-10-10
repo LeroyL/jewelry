@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.GoodsEntity;
+import com.jewelry.core.entity.Good;
 import com.jewelry.core.repository.GoodsRepository;
 import com.jewelry.core.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsRepository goodsRepository;
 
     @Override
-    public GoodsEntity findOne(int id) {
+    public Good findOne(int id) {
         return goodsRepository.findOne(id);
     }
 
     @Override
-    public Page<GoodsEntity> findAll(Pageable pageable) {
+    public Page<Good> findAll(Pageable pageable) {
         return goodsRepository.findAll(pageable);
     }
 
     @Override
-    public GoodsEntity save(GoodsEntity entity) {
+    public Good save(Good entity) {
         return goodsRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<GoodsEntity> batchSave(List<GoodsEntity> entities) {
+    public List<Good> batchSave(List<Good> entities) {
         return goodsRepository.save(entities);
     }
 }

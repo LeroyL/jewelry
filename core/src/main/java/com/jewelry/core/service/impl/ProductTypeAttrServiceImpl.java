@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.ProductTypeAttrEntity;
+import com.jewelry.core.entity.ProductTypeAttr;
 import com.jewelry.core.repository.ProductTypeAttrRepository;
 import com.jewelry.core.service.ProductTypeAttrService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class ProductTypeAttrServiceImpl implements ProductTypeAttrService {
     private ProductTypeAttrRepository productTypeAttrRepository;
 
     @Override
-    public ProductTypeAttrEntity findOne(int id) {
+    public ProductTypeAttr findOne(int id) {
         return productTypeAttrRepository.findOne(id);
     }
 
     @Override
-    public Page<ProductTypeAttrEntity> findAll(Pageable pageable) {
+    public Page<ProductTypeAttr> findAll(Pageable pageable) {
         return productTypeAttrRepository.findAll(pageable);
     }
 
     @Override
-    public ProductTypeAttrEntity save(ProductTypeAttrEntity entity) {
+    public ProductTypeAttr save(ProductTypeAttr entity) {
         return productTypeAttrRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class ProductTypeAttrServiceImpl implements ProductTypeAttrService {
     }
 
     @Override
-    public List<ProductTypeAttrEntity> batchSave(List<ProductTypeAttrEntity> entities) {
+    public List<ProductTypeAttr> batchSave(List<ProductTypeAttr> entities) {
         return productTypeAttrRepository.save(entities);
     }
 }

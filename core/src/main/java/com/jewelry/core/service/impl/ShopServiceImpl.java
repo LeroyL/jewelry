@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.ShopEntity;
+import com.jewelry.core.entity.Shop;
 import com.jewelry.core.repository.ShopRepository;
 import com.jewelry.core.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class ShopServiceImpl implements ShopService {
     private ShopRepository shopRepository;
 
     @Override
-    public ShopEntity findOne(int id) {
+    public Shop findOne(int id) {
         return shopRepository.findOne(id);
     }
 
     @Override
-    public Page<ShopEntity> findAll(Pageable pageable) {
+    public Page<Shop> findAll(Pageable pageable) {
         return shopRepository.findAll(pageable);
     }
 
     @Override
-    public ShopEntity save(ShopEntity entity) {
+    public Shop save(Shop entity) {
         return shopRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public List<ShopEntity> batchSave(List<ShopEntity> entities) {
+    public List<Shop> batchSave(List<Shop> entities) {
         return shopRepository.save(entities);
     }
 }

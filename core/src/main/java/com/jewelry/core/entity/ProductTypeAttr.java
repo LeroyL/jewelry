@@ -7,11 +7,12 @@ import java.sql.Timestamp;
  * Created by lier on 2017/9/29.
  */
 @Entity
-@Table(name = "product_field_attr", schema = "smart_mall")
-public class ProductFieldAttrEntity {
+@Table(name = "product_type_attr", schema = "smart_mall")
+public class ProductTypeAttr {
     private int id;
-    private Integer fid;
+    private Integer cid;
     private String title;
+    private String icon;
     private String remark;
     private Timestamp createTime;
 
@@ -26,13 +27,13 @@ public class ProductFieldAttrEntity {
     }
 
     @Basic
-    @Column(name = "fid", nullable = true)
-    public Integer getFid() {
-        return fid;
+    @Column(name = "cid", nullable = true)
+    public Integer getCid() {
+        return cid;
     }
 
-    public void setFid(Integer fid) {
-        this.fid = fid;
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     @Basic
@@ -43,6 +44,16 @@ public class ProductFieldAttrEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Basic
+    @Column(name = "icon", nullable = true, length = 255)
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     @Basic
@@ -70,11 +81,12 @@ public class ProductFieldAttrEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductFieldAttrEntity that = (ProductFieldAttrEntity) o;
+        ProductTypeAttr that = (ProductTypeAttr) o;
 
         if (id != that.id) return false;
-        if (fid != null ? !fid.equals(that.fid) : that.fid != null) return false;
+        if (cid != null ? !cid.equals(that.cid) : that.cid != null) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (icon != null ? !icon.equals(that.icon) : that.icon != null) return false;
         if (remark != null ? !remark.equals(that.remark) : that.remark != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
 
@@ -84,8 +96,9 @@ public class ProductFieldAttrEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (fid != null ? fid.hashCode() : 0);
+        result = 31 * result + (cid != null ? cid.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (icon != null ? icon.hashCode() : 0);
         result = 31 * result + (remark != null ? remark.hashCode() : 0);
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
         return result;

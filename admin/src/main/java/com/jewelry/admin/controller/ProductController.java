@@ -1,9 +1,9 @@
 package com.jewelry.admin.controller;
 
 import com.jewelry.admin.model.ResultBean;
-import com.jewelry.core.entity.ProductEntity;
-import com.jewelry.core.entity.ProductFieldAttrEntity;
-import com.jewelry.core.entity.ProductFieldEntity;
+import com.jewelry.core.entity.Product;
+import com.jewelry.core.entity.ProductFieldAttr;
+import com.jewelry.core.entity.ProductField;
 import com.jewelry.core.service.ProductFieldAttrService;
 import com.jewelry.core.service.ProductFieldService;
 import com.jewelry.core.service.ProductService;
@@ -33,12 +33,12 @@ public class ProductController {
     private ProductFieldAttrService productFieldAttrService;
 
     @GetMapping("/findOne")
-    public ResultBean<ProductEntity> get(int id){
-        ProductEntity productEntity = productService.findOne(id);
-        ResultBean<ProductEntity> resultBean = new ResultBean<>();
-        if(productEntity != null){
+    public ResultBean<Product> get(int id){
+        Product product = productService.findOne(id);
+        ResultBean<Product> resultBean = new ResultBean<>();
+        if(product != null){
             resultBean.setCode(0);
-            resultBean.setData(productEntity);
+            resultBean.setData(product);
             resultBean.setMessage("查询成功！");
         } else {
             resultBean.setCode(-1);
@@ -48,9 +48,9 @@ public class ProductController {
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<ProductEntity>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
-        Page<ProductEntity> entityPage = productService.findAll(pageable);
-        ResultBean<Page<ProductEntity>> resultBean = new ResultBean<>();
+    public ResultBean<Page<Product>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+        Page<Product> entityPage = productService.findAll(pageable);
+        ResultBean<Page<Product>> resultBean = new ResultBean<>();
         resultBean.setCode(0);
         resultBean.setMessage("查询结束！");
         resultBean.setData(entityPage);
@@ -58,11 +58,11 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public ResultBean<ProductEntity> add(ProductEntity entity){
-        ProductEntity productEntity = productService.save(entity);
-        ResultBean<ProductEntity> resultBean = new ResultBean<>();
+    public ResultBean<Product> add(Product entity){
+        Product product = productService.save(entity);
+        ResultBean<Product> resultBean = new ResultBean<>();
         resultBean.setCode(0);
-        resultBean.setData(productEntity);
+        resultBean.setData(product);
         resultBean.setMessage("添加成功！");
         return resultBean;
     }
@@ -81,51 +81,51 @@ public class ProductController {
     }
 
     @PostMapping("/update")
-    public ResultBean<ProductEntity> update(ProductEntity entity){
-        ProductEntity productEntity = productService.save(entity);
-        ResultBean<ProductEntity> resultBean = new ResultBean<>(0, "更新成功", productEntity);
+    public ResultBean<Product> update(Product entity){
+        Product product = productService.save(entity);
+        ResultBean<Product> resultBean = new ResultBean<>(0, "更新成功", product);
         return resultBean;
     }
 
     @GetMapping("/field/find")
-    public ResultBean<List<ProductFieldEntity>> findFieldByProductId(int productId){
-        List<ProductFieldEntity> entities = productFieldService.findByProductId(productId);
-        ResultBean<List<ProductFieldEntity>> resultBean = new ResultBean<>(0, "查询完成", entities);
+    public ResultBean<List<ProductField>> findFieldByProductId(int productId){
+        List<ProductField> entities = productFieldService.findByProductId(productId);
+        ResultBean<List<ProductField>> resultBean = new ResultBean<>(0, "查询完成", entities);
         return resultBean;
     }
 
     @PostMapping("/field/add")
-    public ResultBean<ProductFieldEntity> addField(ProductFieldEntity entity){
-        ProductFieldEntity fieldEntity = productFieldService.save(entity);
-        ResultBean<ProductFieldEntity> resultBean = new ResultBean<>(0, "添加成功", fieldEntity);
+    public ResultBean<ProductField> addField(ProductField entity){
+        ProductField fieldEntity = productFieldService.save(entity);
+        ResultBean<ProductField> resultBean = new ResultBean<>(0, "添加成功", fieldEntity);
         return resultBean;
     }
 
     @PostMapping("/field/update")
-    public ResultBean<ProductFieldEntity> updateField(ProductFieldEntity entity){
-        ProductFieldEntity fieldEntity = productFieldService.save(entity);
-        ResultBean<ProductFieldEntity> resultBean = new ResultBean<>(0, "更新成功", fieldEntity);
+    public ResultBean<ProductField> updateField(ProductField entity){
+        ProductField fieldEntity = productFieldService.save(entity);
+        ResultBean<ProductField> resultBean = new ResultBean<>(0, "更新成功", fieldEntity);
         return resultBean;
     }
 
     @GetMapping("/field/attr/find")
-    public ResultBean<List<ProductFieldAttrEntity>> findFieldAttrByFieldId(int fieldId){
-        List<ProductFieldAttrEntity> entities = productFieldAttrService.findByFieldId(fieldId);
-        ResultBean<List<ProductFieldAttrEntity>> resultBean = new ResultBean<>(0, "查询完成", entities);
+    public ResultBean<List<ProductFieldAttr>> findFieldAttrByFieldId(int fieldId){
+        List<ProductFieldAttr> entities = productFieldAttrService.findByFieldId(fieldId);
+        ResultBean<List<ProductFieldAttr>> resultBean = new ResultBean<>(0, "查询完成", entities);
         return resultBean;
     }
 
     @PostMapping("field/attr/add")
-    public ResultBean<ProductFieldAttrEntity> addFieldAttr(ProductFieldAttrEntity entity){
-        ProductFieldAttrEntity attrEntity = productFieldAttrService.save(entity);
-        ResultBean<ProductFieldAttrEntity> resultBean = new ResultBean<>(0, "添加成功", attrEntity);
+    public ResultBean<ProductFieldAttr> addFieldAttr(ProductFieldAttr entity){
+        ProductFieldAttr attrEntity = productFieldAttrService.save(entity);
+        ResultBean<ProductFieldAttr> resultBean = new ResultBean<>(0, "添加成功", attrEntity);
         return resultBean;
     }
 
     @PostMapping("/field/attr/update")
-    public ResultBean<ProductFieldAttrEntity> updateFieldAttr(ProductFieldAttrEntity entity){
-        ProductFieldAttrEntity fieldAttrEntity = productFieldAttrService.save(entity);
-        ResultBean<ProductFieldAttrEntity> resultBean = new ResultBean<>(0, "更新成功", fieldAttrEntity);
+    public ResultBean<ProductFieldAttr> updateFieldAttr(ProductFieldAttr entity){
+        ProductFieldAttr fieldAttrEntity = productFieldAttrService.save(entity);
+        ResultBean<ProductFieldAttr> resultBean = new ResultBean<>(0, "更新成功", fieldAttrEntity);
         return resultBean;
     }
 }

@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.ProductFieldAttrEntity;
+import com.jewelry.core.entity.ProductFieldAttr;
 import com.jewelry.core.repository.ProductFieldAttrRepository;
 import com.jewelry.core.service.ProductFieldAttrService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class ProductFieldAttrServiceImpl implements ProductFieldAttrService {
     private ProductFieldAttrRepository productFieldAttrRepository;
 
     @Override
-    public ProductFieldAttrEntity findOne(int id) {
+    public ProductFieldAttr findOne(int id) {
         return productFieldAttrRepository.findOne(id);
     }
 
     @Override
-    public Page<ProductFieldAttrEntity> findAll(Pageable pageable) {
+    public Page<ProductFieldAttr> findAll(Pageable pageable) {
         return productFieldAttrRepository.findAll(pageable);
     }
 
     @Override
-    public ProductFieldAttrEntity save(ProductFieldAttrEntity entity) {
+    public ProductFieldAttr save(ProductFieldAttr entity) {
         return productFieldAttrRepository.save(entity);
     }
 
@@ -45,12 +45,12 @@ public class ProductFieldAttrServiceImpl implements ProductFieldAttrService {
     }
 
     @Override
-    public List<ProductFieldAttrEntity> batchSave(List<ProductFieldAttrEntity> entities) {
+    public List<ProductFieldAttr> batchSave(List<ProductFieldAttr> entities) {
         return productFieldAttrRepository.save(entities);
     }
 
     @Override
-    public List<ProductFieldAttrEntity> findByFieldId(int fieldId) {
+    public List<ProductFieldAttr> findByFieldId(int fieldId) {
         return productFieldAttrRepository.findByFid(fieldId);
     }
 }

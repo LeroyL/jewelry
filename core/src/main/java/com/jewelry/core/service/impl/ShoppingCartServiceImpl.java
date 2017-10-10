@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.ShoppingCartEntity;
+import com.jewelry.core.entity.ShoppingCart;
 import com.jewelry.core.repository.ShoppingCartRepository;
 import com.jewelry.core.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     private ShoppingCartRepository shoppingCartRepository;
 
     @Override
-    public ShoppingCartEntity findOne(int id) {
+    public ShoppingCart findOne(int id) {
         return shoppingCartRepository.findOne(id);
     }
 
     @Override
-    public Page<ShoppingCartEntity> findAll(Pageable pageable) {
+    public Page<ShoppingCart> findAll(Pageable pageable) {
         return shoppingCartRepository.findAll(pageable);
     }
 
     @Override
-    public ShoppingCartEntity save(ShoppingCartEntity entity) {
+    public ShoppingCart save(ShoppingCart entity) {
         return shoppingCartRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public List<ShoppingCartEntity> batchSave(List<ShoppingCartEntity> entities) {
+    public List<ShoppingCart> batchSave(List<ShoppingCart> entities) {
         return shoppingCartRepository.save(entities);
     }
 }

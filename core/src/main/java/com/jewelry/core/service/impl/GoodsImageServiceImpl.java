@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.GoodsImageEntity;
+import com.jewelry.core.entity.GoodImage;
 import com.jewelry.core.repository.GoodsImageRepostitory;
 import com.jewelry.core.service.GoodsImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class GoodsImageServiceImpl implements GoodsImageService {
     private GoodsImageRepostitory goodsImageRepostitory;
 
     @Override
-    public GoodsImageEntity findOne(int id) {
+    public GoodImage findOne(int id) {
         return goodsImageRepostitory.findOne(id);
     }
 
     @Override
-    public Page<GoodsImageEntity> findAll(Pageable pageable) {
+    public Page<GoodImage> findAll(Pageable pageable) {
         return goodsImageRepostitory.findAll(pageable);
     }
 
     @Override
-    public GoodsImageEntity save(GoodsImageEntity entity) {
+    public GoodImage save(GoodImage entity) {
         return goodsImageRepostitory.save(entity);
     }
 
@@ -45,12 +45,12 @@ public class GoodsImageServiceImpl implements GoodsImageService {
     }
 
     @Override
-    public List<GoodsImageEntity> batchSave(List<GoodsImageEntity> entities) {
+    public List<GoodImage> batchSave(List<GoodImage> entities) {
         return goodsImageRepostitory.save(entities);
     }
 
     @Override
-    public List<GoodsImageEntity> findByGoodId(int goodId) {
+    public List<GoodImage> findByGoodId(int goodId) {
         return goodsImageRepostitory.findByGid(goodId);
     }
 

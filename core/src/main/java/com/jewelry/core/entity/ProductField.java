@@ -7,12 +7,11 @@ import java.sql.Timestamp;
  * Created by lier on 2017/9/29.
  */
 @Entity
-@Table(name = "product", schema = "smart_mall")
-public class ProductEntity {
+@Table(name = "product_field", schema = "smart_mall")
+public class ProductField {
     private int id;
-    private Integer cid;
+    private Integer spuId;
     private String title;
-    private String icon;
     private String remark;
     private Timestamp createTime;
 
@@ -27,13 +26,13 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "cid", nullable = true)
-    public Integer getCid() {
-        return cid;
+    @Column(name = "spu_id", nullable = true)
+    public Integer getSpuId() {
+        return spuId;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setSpuId(Integer spuId) {
+        this.spuId = spuId;
     }
 
     @Basic
@@ -44,16 +43,6 @@ public class ProductEntity {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    @Basic
-    @Column(name = "icon", nullable = true, length = 255)
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
     }
 
     @Basic
@@ -81,12 +70,11 @@ public class ProductEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductEntity that = (ProductEntity) o;
+        ProductField that = (ProductField) o;
 
         if (id != that.id) return false;
-        if (cid != null ? !cid.equals(that.cid) : that.cid != null) return false;
+        if (spuId != null ? !spuId.equals(that.spuId) : that.spuId != null) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (icon != null ? !icon.equals(that.icon) : that.icon != null) return false;
         if (remark != null ? !remark.equals(that.remark) : that.remark != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
 
@@ -96,9 +84,8 @@ public class ProductEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (cid != null ? cid.hashCode() : 0);
+        result = 31 * result + (spuId != null ? spuId.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (icon != null ? icon.hashCode() : 0);
         result = 31 * result + (remark != null ? remark.hashCode() : 0);
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
         return result;

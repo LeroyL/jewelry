@@ -1,7 +1,7 @@
 package com.jewelry.core.service.impl;
 
 import com.jewelry.core.service.OrderGoodsService;
-import com.jewelry.core.entity.OrderGoodsEntity;
+import com.jewelry.core.entity.OrderGood;
 import com.jewelry.core.repository.OrderGoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,17 +20,17 @@ public class OrderGoodsServiceImpl implements OrderGoodsService {
     private OrderGoodsRepository orderGoodsRepository;
 
     @Override
-    public OrderGoodsEntity findOne(int id) {
+    public OrderGood findOne(int id) {
         return orderGoodsRepository.findOne(id);
     }
 
     @Override
-    public Page<OrderGoodsEntity> findAll(Pageable pageable) {
+    public Page<OrderGood> findAll(Pageable pageable) {
         return orderGoodsRepository.findAll(pageable);
     }
 
     @Override
-    public OrderGoodsEntity save(OrderGoodsEntity entity) {
+    public OrderGood save(OrderGood entity) {
         return orderGoodsRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class OrderGoodsServiceImpl implements OrderGoodsService {
     }
 
     @Override
-    public List<OrderGoodsEntity> batchSave(List<OrderGoodsEntity> entities) {
+    public List<OrderGood> batchSave(List<OrderGood> entities) {
         return orderGoodsRepository.save(entities);
     }
 }

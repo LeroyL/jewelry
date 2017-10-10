@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.UserAddressEntity;
+import com.jewelry.core.entity.UserAddress;
 import com.jewelry.core.repository.UserAddressRepository;
 import com.jewelry.core.service.UserAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class UserAddressServiceImpl implements UserAddressService {
     private UserAddressRepository userAddressRepository;
 
     @Override
-    public UserAddressEntity findOne(int id) {
+    public UserAddress findOne(int id) {
         return userAddressRepository.findOne(id);
     }
 
     @Override
-    public Page<UserAddressEntity> findAll(Pageable pageable) {
+    public Page<UserAddress> findAll(Pageable pageable) {
         return userAddressRepository.findAll(pageable);
     }
 
     @Override
-    public UserAddressEntity save(UserAddressEntity entity) {
+    public UserAddress save(UserAddress entity) {
         return userAddressRepository.save(entity);
     }
 
@@ -45,12 +45,12 @@ public class UserAddressServiceImpl implements UserAddressService {
     }
 
     @Override
-    public List<UserAddressEntity> batchSave(List<UserAddressEntity> entities) {
+    public List<UserAddress> batchSave(List<UserAddress> entities) {
         return userAddressRepository.save(entities);
     }
 
     @Override
-    public List<UserAddressEntity> findByUserId(int userId) {
+    public List<UserAddress> findByUserId(int userId) {
         return userAddressRepository.findByUserId(userId);
     }
 }

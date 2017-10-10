@@ -7,8 +7,8 @@ import java.sql.Timestamp;
  * Created by lier on 2017/9/29.
  */
 @Entity
-@Table(name = "product_type_attr", schema = "smart_mall")
-public class ProductTypeAttrEntity {
+@Table(name = "product", schema = "smart_mall")
+public class Product {
     private int id;
     private Integer cid;
     private String title;
@@ -81,7 +81,7 @@ public class ProductTypeAttrEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductTypeAttrEntity that = (ProductTypeAttrEntity) o;
+        Product that = (Product) o;
 
         if (id != that.id) return false;
         if (cid != null ? !cid.equals(that.cid) : that.cid != null) return false;

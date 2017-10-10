@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.BillsEntity;
+import com.jewelry.core.entity.Bill;
 import com.jewelry.core.repository.BillsRepository;
 import com.jewelry.core.service.BillsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class BillsServiceImpl implements BillsService {
     private BillsRepository billsRepository;
 
     @Override
-    public BillsEntity findOne(int id) {
+    public Bill findOne(int id) {
         return billsRepository.getOne(id);
     }
 
     @Override
-    public Page<BillsEntity> findAll(Pageable pageable) {
+    public Page<Bill> findAll(Pageable pageable) {
         return billsRepository.findAll(pageable);
     }
 
     @Override
-    public BillsEntity save(BillsEntity entity) {
+    public Bill save(Bill entity) {
         return billsRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class BillsServiceImpl implements BillsService {
     }
 
     @Override
-    public List<BillsEntity> batchSave(List<BillsEntity> entities) {
+    public List<Bill> batchSave(List<Bill> entities) {
         return billsRepository.save(entities);
     }
 }

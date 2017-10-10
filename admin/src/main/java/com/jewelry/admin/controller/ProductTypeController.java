@@ -1,7 +1,7 @@
 package com.jewelry.admin.controller;
 
 import com.jewelry.admin.model.ResultBean;
-import com.jewelry.core.entity.ProductTypeEntity;
+import com.jewelry.core.entity.ProductType;
 import com.jewelry.core.service.ProductTypeAttrService;
 import com.jewelry.core.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +25,12 @@ public class ProductTypeController {
     private ProductTypeAttrService productTypeAttrService;
 
     @GetMapping("/findOne")
-    public ResultBean<ProductTypeEntity> get(int id){
-        ProductTypeEntity productTypeEntity = productTypeService.findOne(id);
-        ResultBean<ProductTypeEntity> resultBean = new ResultBean<>();
-        if(productTypeEntity != null){
+    public ResultBean<ProductType> get(int id){
+        ProductType productType = productTypeService.findOne(id);
+        ResultBean<ProductType> resultBean = new ResultBean<>();
+        if(productType != null){
             resultBean.setCode(0);
-            resultBean.setData(productTypeEntity);
+            resultBean.setData(productType);
             resultBean.setMessage("查询成功！");
         } else {
             resultBean.setCode(-1);
@@ -40,9 +40,9 @@ public class ProductTypeController {
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<ProductTypeEntity>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
-        Page<ProductTypeEntity> entityPage = productTypeService.findAll(pageable);
-        ResultBean<Page<ProductTypeEntity>> resultBean = new ResultBean<>();
+    public ResultBean<Page<ProductType>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+        Page<ProductType> entityPage = productTypeService.findAll(pageable);
+        ResultBean<Page<ProductType>> resultBean = new ResultBean<>();
         resultBean.setCode(0);
         resultBean.setMessage("查询结束！");
         resultBean.setData(entityPage);
@@ -50,11 +50,11 @@ public class ProductTypeController {
     }
 
     @PostMapping("/add")
-    public ResultBean<ProductTypeEntity> add(ProductTypeEntity entity){
-        ProductTypeEntity productTypeEntity = productTypeService.save(entity);
-        ResultBean<ProductTypeEntity> resultBean = new ResultBean<>();
+    public ResultBean<ProductType> add(ProductType entity){
+        ProductType productType = productTypeService.save(entity);
+        ResultBean<ProductType> resultBean = new ResultBean<>();
         resultBean.setCode(0);
-        resultBean.setData(productTypeEntity);
+        resultBean.setData(productType);
         resultBean.setMessage("添加成功！");
         return resultBean;
     }
@@ -73,9 +73,9 @@ public class ProductTypeController {
     }
 
     @PostMapping("/update")
-    public ResultBean<ProductTypeEntity> update(ProductTypeEntity entity){
-        ProductTypeEntity productTypeEntity = productTypeService.save(entity);
-        ResultBean<ProductTypeEntity> resultBean = new ResultBean<>(0, "更新成功", productTypeEntity);
+    public ResultBean<ProductType> update(ProductType entity){
+        ProductType productType = productTypeService.save(entity);
+        ResultBean<ProductType> resultBean = new ResultBean<>(0, "更新成功", productType);
         return resultBean;
     }
 }

@@ -1,12 +1,12 @@
 package com.jewelry.core.service;
 
-import com.jewelry.core.entity.ProductFieldAttrEntity;
+import com.jewelry.core.entity.ProductFieldAttr;
 
 import java.util.List;
 
 /**
  * Created by lier on 2017/9/29.
  */
-public interface ProductFieldAttrService extends BaseService<ProductFieldAttrEntity> {
-    List<ProductFieldAttrEntity> findByFieldId(int fieldId);
+public interface ProductFieldAttrService extends BaseService<ProductFieldAttr> {
+    List<ProductFieldAttr> findByFieldId(int fieldId);
 }

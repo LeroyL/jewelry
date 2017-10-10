@@ -1,7 +1,7 @@
 package com.jewelry.admin.controller;
 
 import com.jewelry.admin.model.ResultBean;
-import com.jewelry.core.entity.OrdersEntity;
+import com.jewelry.core.entity.Order;
 import com.jewelry.core.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,20 +21,20 @@ public class OrderController {
     private OrdersService ordersService;
 
     @GetMapping("/find")
-    public ResultBean<OrdersEntity> find(int orderId){
-        OrdersEntity entity = ordersService.findOne(orderId);
+    public ResultBean<Order> find(int orderId){
+        Order entity = ordersService.findOne(orderId);
         return new ResultBean<>(0, "查询完成", entity);
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<OrdersEntity>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
-        Page<OrdersEntity> entityPage = ordersService.findAll(pageable);
+    public ResultBean<Page<Order>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        Page<Order> entityPage = ordersService.findAll(pageable);
         return new ResultBean<>(0, "查询完成", entityPage);
     }
 
     @PostMapping("/update")
-    public ResultBean<OrdersEntity> update(OrdersEntity entity){
-        OrdersEntity ordersEntity = ordersService.save(entity);
-        return new ResultBean<>(0, "保存成功", ordersEntity);
+    public ResultBean<Order> update(Order entity){
+        Order order = ordersService.save(entity);
+        return new ResultBean<>(0, "保存成功", order);
     }
 }

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "good_sku", schema = "smart_mall")
-public class GoodSkuEntity {
+public class GoodSKU {
     private int id;
     private Integer goodId;
     private String skuTitle;
@@ -115,7 +115,7 @@ public class GoodSkuEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GoodSkuEntity that = (GoodSkuEntity) o;
+        GoodSKU that = (GoodSKU) o;
 
         if (id != that.id) return false;
         if (goodId != null ? !goodId.equals(that.goodId) : that.goodId != null) return false;

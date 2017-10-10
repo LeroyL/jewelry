@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "bills", schema = "smart_mall")
-public class BillsEntity {
+public class Bill {
     private int id;
     private String billNo;
     private Integer orderId;
@@ -137,7 +137,7 @@ public class BillsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BillsEntity that = (BillsEntity) o;
+        Bill that = (Bill) o;
 
         if (id != that.id) return false;
         if (billNo != null ? !billNo.equals(that.billNo) : that.billNo != null) return false;

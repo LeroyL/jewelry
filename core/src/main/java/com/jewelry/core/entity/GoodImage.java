@@ -7,11 +7,12 @@ import java.sql.Timestamp;
  * Created by lier on 2017/9/29.
  */
 @Entity
-@Table(name = "goods_detail", schema = "smart_mall")
-public class GoodsDetailEntity {
+@Table(name = "goods_image", schema = "smart_mall")
+public class GoodImage {
     private int id;
     private Integer gid;
-    private String detail;
+    private String image;
+    private Integer status;
     private Timestamp createTime;
 
     @Id
@@ -35,13 +36,23 @@ public class GoodsDetailEntity {
     }
 
     @Basic
-    @Column(name = "detail", nullable = true, length = -1)
-    public String getDetail() {
-        return detail;
+    @Column(name = "image", nullable = true, length = 255)
+    public String getImage() {
+        return image;
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Basic
+    @Column(name = "status", nullable = true)
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Basic
@@ -59,11 +70,12 @@ public class GoodsDetailEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GoodsDetailEntity that = (GoodsDetailEntity) o;
+        GoodImage that = (GoodImage) o;
 
         if (id != that.id) return false;
         if (gid != null ? !gid.equals(that.gid) : that.gid != null) return false;
-        if (detail != null ? !detail.equals(that.detail) : that.detail != null) return false;
+        if (image != null ? !image.equals(that.image) : that.image != null) return false;
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
 
         return true;
@@ -73,7 +85,8 @@ public class GoodsDetailEntity {
     public int hashCode() {
         int result = id;
         result = 31 * result + (gid != null ? gid.hashCode() : 0);
-        result = 31 * result + (detail != null ? detail.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
         return result;
     }

@@ -2,7 +2,7 @@ package com.jewelry.core.service.impl;
 
 import com.jewelry.core.repository.ProductTypeRepository;
 import com.jewelry.core.service.ProductTypeService;
-import com.jewelry.core.entity.ProductTypeEntity;
+import com.jewelry.core.entity.ProductType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,17 +20,17 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     private ProductTypeRepository productTypeRepository;
 
     @Override
-    public ProductTypeEntity findOne(int id) {
+    public ProductType findOne(int id) {
         return productTypeRepository.findOne(id);
     }
 
     @Override
-    public Page<ProductTypeEntity> findAll(Pageable pageable) {
+    public Page<ProductType> findAll(Pageable pageable) {
         return productTypeRepository.findAll(pageable);
     }
 
     @Override
-    public ProductTypeEntity save(ProductTypeEntity entity) {
+    public ProductType save(ProductType entity) {
         return productTypeRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
-    public List<ProductTypeEntity> batchSave(List<ProductTypeEntity> entities) {
+    public List<ProductType> batchSave(List<ProductType> entities) {
         return productTypeRepository.save(entities);
     }
 }

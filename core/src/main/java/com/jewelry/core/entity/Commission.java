@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "commission", schema = "smart_mall")
-public class CommissionEntity {
+public class Commission {
     private int id;
     private Integer level;
     private BigDecimal commission;
@@ -60,7 +60,7 @@ public class CommissionEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CommissionEntity that = (CommissionEntity) o;
+        Commission that = (Commission) o;
 
         if (id != that.id) return false;
         if (level != null ? !level.equals(that.level) : that.level != null) return false;

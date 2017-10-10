@@ -2,7 +2,7 @@ package com.jewelry.core.service.impl;
 
 import com.jewelry.core.repository.GoodsDetailRepository;
 import com.jewelry.core.service.GoodsDetailService;
-import com.jewelry.core.entity.GoodsDetailEntity;
+import com.jewelry.core.entity.GoodsDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,17 +20,17 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
     private GoodsDetailRepository goodsDetailRepository;
 
     @Override
-    public GoodsDetailEntity findOne(int id) {
+    public GoodsDetail findOne(int id) {
         return goodsDetailRepository.findOne(id);
     }
 
     @Override
-    public Page<GoodsDetailEntity> findAll(Pageable pageable) {
+    public Page<GoodsDetail> findAll(Pageable pageable) {
         return goodsDetailRepository.findAll(pageable);
     }
 
     @Override
-    public GoodsDetailEntity save(GoodsDetailEntity entity) {
+    public GoodsDetail save(GoodsDetail entity) {
         return goodsDetailRepository.save(entity);
     }
 
@@ -45,13 +45,13 @@ public class GoodsDetailServiceImpl implements GoodsDetailService {
     }
 
     @Override
-    public List<GoodsDetailEntity> batchSave(List<GoodsDetailEntity> entities) {
+    public List<GoodsDetail> batchSave(List<GoodsDetail> entities) {
         return goodsDetailRepository.save(entities);
     }
 
     @Override
-    public GoodsDetailEntity findByGoodId(int goodId) {
-        List<GoodsDetailEntity> entities = goodsDetailRepository.findByGid(goodId);
+    public GoodsDetail findByGoodId(int goodId) {
+        List<GoodsDetail> entities = goodsDetailRepository.findByGid(goodId);
         return entities.isEmpty() ? null : entities.get(0);
     }
 

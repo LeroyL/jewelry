@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.ProductFieldEntity;
+import com.jewelry.core.entity.ProductField;
 import com.jewelry.core.repository.ProductFieldRepository;
 import com.jewelry.core.service.ProductFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class ProductFieldServiceImpl implements ProductFieldService {
     private ProductFieldRepository productFieldRepository;
 
     @Override
-    public ProductFieldEntity findOne(int id) {
+    public ProductField findOne(int id) {
         return productFieldRepository.findOne(id);
     }
 
     @Override
-    public Page<ProductFieldEntity> findAll(Pageable pageable) {
+    public Page<ProductField> findAll(Pageable pageable) {
         return productFieldRepository.findAll(pageable);
     }
 
     @Override
-    public ProductFieldEntity save(ProductFieldEntity entity) {
+    public ProductField save(ProductField entity) {
         return productFieldRepository.save(entity);
     }
 
@@ -45,12 +45,12 @@ public class ProductFieldServiceImpl implements ProductFieldService {
     }
 
     @Override
-    public List<ProductFieldEntity> batchSave(List<ProductFieldEntity> entities) {
+    public List<ProductField> batchSave(List<ProductField> entities) {
         return productFieldRepository.save(entities);
     }
 
     @Override
-    public List<ProductFieldEntity> findByProductId(int productId) {
+    public List<ProductField> findByProductId(int productId) {
         return productFieldRepository.findBySpuId(productId);
     }
 }

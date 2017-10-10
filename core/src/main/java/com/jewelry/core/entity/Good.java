@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "goods", schema = "smart_mall")
-public class GoodsEntity {
+public class Good {
     private int id;
     private Integer no;
     private Integer shopId;
@@ -103,7 +103,7 @@ public class GoodsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GoodsEntity that = (GoodsEntity) o;
+        Good that = (Good) o;
 
         if (id != that.id) return false;
         if (no != null ? !no.equals(that.no) : that.no != null) return false;

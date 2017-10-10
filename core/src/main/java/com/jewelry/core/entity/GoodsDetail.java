@@ -7,11 +7,11 @@ import java.sql.Timestamp;
  * Created by lier on 2017/9/29.
  */
 @Entity
-@Table(name = "product_type", schema = "smart_mall")
-public class ProductTypeEntity {
+@Table(name = "goods_detail", schema = "smart_mall")
+public class GoodsDetail {
     private int id;
-    private String title;
-    private String remark;
+    private Integer gid;
+    private String detail;
     private Timestamp createTime;
 
     @Id
@@ -25,23 +25,23 @@ public class ProductTypeEntity {
     }
 
     @Basic
-    @Column(name = "title", nullable = true, length = 255)
-    public String getTitle() {
-        return title;
+    @Column(name = "gid", nullable = true)
+    public Integer getGid() {
+        return gid;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setGid(Integer gid) {
+        this.gid = gid;
     }
 
     @Basic
-    @Column(name = "remark", nullable = true, length = 255)
-    public String getRemark() {
-        return remark;
+    @Column(name = "detail", nullable = true, length = -1)
+    public String getDetail() {
+        return detail;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     @Basic
@@ -59,11 +59,11 @@ public class ProductTypeEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductTypeEntity that = (ProductTypeEntity) o;
+        GoodsDetail that = (GoodsDetail) o;
 
         if (id != that.id) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (remark != null ? !remark.equals(that.remark) : that.remark != null) return false;
+        if (gid != null ? !gid.equals(that.gid) : that.gid != null) return false;
+        if (detail != null ? !detail.equals(that.detail) : that.detail != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
 
         return true;
@@ -72,8 +72,8 @@ public class ProductTypeEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (remark != null ? remark.hashCode() : 0);
+        result = 31 * result + (gid != null ? gid.hashCode() : 0);
+        result = 31 * result + (detail != null ? detail.hashCode() : 0);
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
         return result;
     }

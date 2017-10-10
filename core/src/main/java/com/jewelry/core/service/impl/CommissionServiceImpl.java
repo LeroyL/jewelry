@@ -2,7 +2,7 @@ package com.jewelry.core.service.impl;
 
 import com.jewelry.core.repository.CommissionRepository;
 import com.jewelry.core.service.CommissionService;
-import com.jewelry.core.entity.CommissionEntity;
+import com.jewelry.core.entity.Commission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,17 +20,17 @@ public class CommissionServiceImpl implements CommissionService {
     private CommissionRepository commissionRepository;
 
     @Override
-    public CommissionEntity findOne(int id) {
+    public Commission findOne(int id) {
         return commissionRepository.findOne(id);
     }
 
     @Override
-    public Page<CommissionEntity> findAll(Pageable pageable) {
+    public Page<Commission> findAll(Pageable pageable) {
         return commissionRepository.findAll(pageable);
     }
 
     @Override
-    public CommissionEntity save(CommissionEntity entity) {
+    public Commission save(Commission entity) {
         return commissionRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class CommissionServiceImpl implements CommissionService {
     }
 
     @Override
-    public List<CommissionEntity> batchSave(List<CommissionEntity> entities) {
+    public List<Commission> batchSave(List<Commission> entities) {
         return commissionRepository.save(entities);
     }
 }

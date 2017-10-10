@@ -7,54 +7,44 @@ import java.sql.Timestamp;
  * Created by lier on 2017/9/29.
  */
 @Entity
-@Table(name = "shop_advertising", schema = "smart_mall")
-public class ShopAdvertisingEntity {
-    private int id;
-    private Integer shopId;
-    private String image;
-    private String link;
+@Table(name = "shop", schema = "smart_mall")
+public class Shop {
+    private Integer id;
+    private String title;
+    private String logo;
     private String description;
+    private Integer ownerId;
     private Integer status;
     private Timestamp createTime;
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "shop_id", nullable = true)
-    public Integer getShopId() {
-        return shopId;
+    @Column(name = "title", nullable = true, length = 255)
+    public String getTitle() {
+        return title;
     }
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
-    }
-
-    @Basic
-    @Column(name = "image", nullable = true, length = 255)
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Basic
-    @Column(name = "link", nullable = true, length = 255)
-    public String getLink() {
-        return link;
+    @Column(name = "logo", nullable = true, length = 255)
+    public String getLogo() {
+        return logo;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 
     @Basic
@@ -65,6 +55,16 @@ public class ShopAdvertisingEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Basic
+    @Column(name = "owner_id", nullable = true)
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     @Basic
@@ -92,13 +92,13 @@ public class ShopAdvertisingEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShopAdvertisingEntity that = (ShopAdvertisingEntity) o;
+        Shop that = (Shop) o;
 
         if (id != that.id) return false;
-        if (shopId != null ? !shopId.equals(that.shopId) : that.shopId != null) return false;
-        if (image != null ? !image.equals(that.image) : that.image != null) return false;
-        if (link != null ? !link.equals(that.link) : that.link != null) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (logo != null ? !logo.equals(that.logo) : that.logo != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (ownerId != null ? !ownerId.equals(that.ownerId) : that.ownerId != null) return false;
         if (status != null ? !status.equals(that.status) : that.status != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
 
@@ -108,10 +108,10 @@ public class ShopAdvertisingEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (shopId != null ? shopId.hashCode() : 0);
-        result = 31 * result + (image != null ? image.hashCode() : 0);
-        result = 31 * result + (link != null ? link.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (logo != null ? logo.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (ownerId != null ? ownerId.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
         return result;

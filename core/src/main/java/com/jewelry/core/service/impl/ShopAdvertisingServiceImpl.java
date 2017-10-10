@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.ShopAdvertisingEntity;
+import com.jewelry.core.entity.ShopAdvertising;
 import com.jewelry.core.repository.ShopAdvertisingRepository;
 import com.jewelry.core.service.ShopAdvertisingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class ShopAdvertisingServiceImpl implements ShopAdvertisingService {
     private ShopAdvertisingRepository shopAdvertisingRepository;
 
     @Override
-    public ShopAdvertisingEntity findOne(int id) {
+    public ShopAdvertising findOne(int id) {
         return shopAdvertisingRepository.findOne(id);
     }
 
     @Override
-    public Page<ShopAdvertisingEntity> findAll(Pageable pageable) {
+    public Page<ShopAdvertising> findAll(Pageable pageable) {
         return shopAdvertisingRepository.findAll(pageable);
     }
 
     @Override
-    public ShopAdvertisingEntity save(ShopAdvertisingEntity entity) {
+    public ShopAdvertising save(ShopAdvertising entity) {
         return shopAdvertisingRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class ShopAdvertisingServiceImpl implements ShopAdvertisingService {
     }
 
     @Override
-    public List<ShopAdvertisingEntity> batchSave(List<ShopAdvertisingEntity> entities) {
+    public List<ShopAdvertising> batchSave(List<ShopAdvertising> entities) {
         return shopAdvertisingRepository.save(entities);
     }
 }

@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.GoodSkuEntity;
+import com.jewelry.core.entity.GoodSKU;
 import com.jewelry.core.repository.GoodSkuRepository;
 import com.jewelry.core.service.GoodSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class GoodSkuServiceImpl implements GoodSkuService {
     private GoodSkuRepository goodSkuRepository;
 
     @Override
-    public GoodSkuEntity findOne(int id) {
+    public GoodSKU findOne(int id) {
         return goodSkuRepository.findOne(id);
     }
 
     @Override
-    public Page<GoodSkuEntity> findAll(Pageable pageable) {
+    public Page<GoodSKU> findAll(Pageable pageable) {
         return goodSkuRepository.findAll(pageable);
     }
 
     @Override
-    public GoodSkuEntity save(GoodSkuEntity entity) {
+    public GoodSKU save(GoodSKU entity) {
         return goodSkuRepository.save(entity);
     }
 
@@ -45,12 +45,12 @@ public class GoodSkuServiceImpl implements GoodSkuService {
     }
 
     @Override
-    public List<GoodSkuEntity> batchSave(List<GoodSkuEntity> entities) {
+    public List<GoodSKU> batchSave(List<GoodSKU> entities) {
         return goodSkuRepository.save(entities);
     }
 
     @Override
-    public List<GoodSkuEntity> findByGoodId(int goodId) {
+    public List<GoodSKU> findByGoodId(int goodId) {
         return goodSkuRepository.findByGoodId(goodId);
     }
 

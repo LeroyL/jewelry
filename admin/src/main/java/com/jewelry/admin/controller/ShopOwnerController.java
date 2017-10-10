@@ -1,7 +1,7 @@
 package com.jewelry.admin.controller;
 
 import com.jewelry.admin.model.ResultBean;
-import com.jewelry.core.entity.ShopOwnerEntity;
+import com.jewelry.core.entity.ShopOwner;
 import com.jewelry.core.service.ShopOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,12 +21,12 @@ public class ShopOwnerController {
     private ShopOwnerService shopOwnerService;
 
     @GetMapping("/findOne")
-    public ResultBean<ShopOwnerEntity> get(int id){
-        ShopOwnerEntity shopOwnerEntity = shopOwnerService.findOne(id);
-        ResultBean<ShopOwnerEntity> resultBean = new ResultBean<>();
-        if(shopOwnerEntity != null){
+    public ResultBean<ShopOwner> get(int id){
+        ShopOwner shopOwner = shopOwnerService.findOne(id);
+        ResultBean<ShopOwner> resultBean = new ResultBean<>();
+        if(shopOwner != null){
             resultBean.setCode(0);
-            resultBean.setData(shopOwnerEntity);
+            resultBean.setData(shopOwner);
             resultBean.setMessage("查询成功！");
         } else {
             resultBean.setCode(-1);
@@ -36,9 +36,9 @@ public class ShopOwnerController {
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<ShopOwnerEntity>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
-        Page<ShopOwnerEntity> entityPage = shopOwnerService.findAll(pageable);
-        ResultBean<Page<ShopOwnerEntity>> resultBean = new ResultBean<>();
+    public ResultBean<Page<ShopOwner>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+        Page<ShopOwner> entityPage = shopOwnerService.findAll(pageable);
+        ResultBean<Page<ShopOwner>> resultBean = new ResultBean<>();
         resultBean.setCode(0);
         resultBean.setMessage("查询结束！");
         resultBean.setData(entityPage);
@@ -46,11 +46,11 @@ public class ShopOwnerController {
     }
 
     @PostMapping("/add")
-    public ResultBean<ShopOwnerEntity> add(ShopOwnerEntity entity){
-        ShopOwnerEntity shopOwnerEntity = shopOwnerService.save(entity);
-        ResultBean<ShopOwnerEntity> resultBean = new ResultBean<>();
+    public ResultBean<ShopOwner> add(ShopOwner entity){
+        ShopOwner shopOwner = shopOwnerService.save(entity);
+        ResultBean<ShopOwner> resultBean = new ResultBean<>();
         resultBean.setCode(0);
-        resultBean.setData(shopOwnerEntity);
+        resultBean.setData(shopOwner);
         resultBean.setMessage("添加成功！");
         return resultBean;
     }
@@ -69,9 +69,9 @@ public class ShopOwnerController {
     }
 
     @PostMapping("/update")
-    public ResultBean<ShopOwnerEntity> update(ShopOwnerEntity entity){
-        ShopOwnerEntity shopOwnerEntity = shopOwnerService.save(entity);
-        ResultBean<ShopOwnerEntity> resultBean = new ResultBean<>(0, "更新成功", shopOwnerEntity);
+    public ResultBean<ShopOwner> update(ShopOwner entity){
+        ShopOwner shopOwner = shopOwnerService.save(entity);
+        ResultBean<ShopOwner> resultBean = new ResultBean<>(0, "更新成功", shopOwner);
         return resultBean;
     }
 

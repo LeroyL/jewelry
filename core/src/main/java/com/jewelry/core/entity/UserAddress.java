@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "user_address", schema = "smart_mall")
-public class UserAddressEntity {
+public class UserAddress {
     private int id;
     private Integer userId;
     private String consignee;
@@ -92,7 +92,7 @@ public class UserAddressEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserAddressEntity that = (UserAddressEntity) o;
+        UserAddress that = (UserAddress) o;
 
         if (id != that.id) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;

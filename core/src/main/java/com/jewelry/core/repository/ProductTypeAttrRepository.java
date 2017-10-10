@@ -1,10 +1,10 @@
 package com.jewelry.core.repository;
 
-import com.jewelry.core.entity.ProductTypeAttrEntity;
+import com.jewelry.core.entity.ProductTypeAttr;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Created by lier on 2017/9/29.
  */
-public interface ProductTypeAttrRepository extends JpaRepository<ProductTypeAttrEntity, Integer> {
+public interface ProductTypeAttrRepository extends JpaRepository<ProductTypeAttr, Integer> {
 }

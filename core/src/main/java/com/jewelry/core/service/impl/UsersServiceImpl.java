@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.UsersEntity;
+import com.jewelry.core.entity.User;
 import com.jewelry.core.repository.UsersRepository;
 import com.jewelry.core.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class UsersServiceImpl implements UsersService {
     private UsersRepository usersRepository;
 
     @Override
-    public UsersEntity findOne(int id) {
+    public User findOne(int id) {
         return usersRepository.findOne(id);
     }
 
     @Override
-    public Page<UsersEntity> findAll(Pageable pageable) {
+    public Page<User> findAll(Pageable pageable) {
         return usersRepository.findAll(pageable);
     }
 
     @Override
-    public UsersEntity save(UsersEntity entity) {
+    public User save(User entity) {
         return usersRepository.save(entity);
     }
 
@@ -45,7 +45,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public List<UsersEntity> batchSave(List<UsersEntity> entities) {
+    public List<User> batchSave(List<User> entities) {
         return usersRepository.save(entities);
     }
 }

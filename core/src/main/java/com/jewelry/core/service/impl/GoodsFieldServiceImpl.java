@@ -1,6 +1,6 @@
 package com.jewelry.core.service.impl;
 
-import com.jewelry.core.entity.GoodsFieldEntity;
+import com.jewelry.core.entity.GoodField;
 import com.jewelry.core.repository.GoodsFieldRepository;
 import com.jewelry.core.service.GoodsFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +20,17 @@ public class GoodsFieldServiceImpl implements GoodsFieldService {
     private GoodsFieldRepository goodsFieldRepository;
 
     @Override
-    public GoodsFieldEntity findOne(int id) {
+    public GoodField findOne(int id) {
         return goodsFieldRepository.findOne(id);
     }
 
     @Override
-    public Page<GoodsFieldEntity> findAll(Pageable pageable) {
+    public Page<GoodField> findAll(Pageable pageable) {
         return goodsFieldRepository.findAll(pageable);
     }
 
     @Override
-    public GoodsFieldEntity save(GoodsFieldEntity entity) {
+    public GoodField save(GoodField entity) {
         return goodsFieldRepository.save(entity);
     }
 
@@ -45,12 +45,12 @@ public class GoodsFieldServiceImpl implements GoodsFieldService {
     }
 
     @Override
-    public List<GoodsFieldEntity> batchSave(List<GoodsFieldEntity> entities) {
+    public List<GoodField> batchSave(List<GoodField> entities) {
         return goodsFieldRepository.save(entities);
     }
 
     @Override
-    public List<GoodsFieldEntity> findByGoodId(int goodId) {
+    public List<GoodField> findByGoodId(int goodId) {
         return goodsFieldRepository.findByGid(goodId);
     }
 

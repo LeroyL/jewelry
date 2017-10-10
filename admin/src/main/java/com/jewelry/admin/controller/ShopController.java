@@ -1,19 +1,14 @@
 package com.jewelry.admin.controller;
 
 import com.jewelry.admin.model.ResultBean;
-import com.jewelry.admin.model.ShopVo;
-import com.jewelry.admin.service.ShopBusinessService;
-import com.jewelry.core.entity.ShopEntity;
+import com.jewelry.core.entity.Shop;
 import com.jewelry.core.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 /**
  * Created by lier on 2017/9/30.
@@ -26,12 +21,12 @@ public class ShopController {
     private ShopService shopService;
 
     @GetMapping("/findOne")
-    public ResultBean<ShopEntity> get(int id){
-        ShopEntity shopEntity = shopService.findOne(id);
-        ResultBean<ShopEntity> resultBean = new ResultBean<>();
-        if(shopEntity != null){
+    public ResultBean<Shop> get(int id){
+        Shop shop = shopService.findOne(id);
+        ResultBean<Shop> resultBean = new ResultBean<>();
+        if(shop != null){
             resultBean.setCode(0);
-            resultBean.setData(shopEntity);
+            resultBean.setData(shop);
             resultBean.setMessage("查询成功！");
         } else {
             resultBean.setCode(-1);
@@ -41,9 +36,9 @@ public class ShopController {
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<ShopEntity>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
-        Page<ShopEntity> entityPage = shopService.findAll(pageable);
-        ResultBean<Page<ShopEntity>> resultBean = new ResultBean<>();
+    public ResultBean<Page<Shop>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+        Page<Shop> entityPage = shopService.findAll(pageable);
+        ResultBean<Page<Shop>> resultBean = new ResultBean<>();
         resultBean.setCode(0);
         resultBean.setMessage("查询结束！");
         resultBean.setData(entityPage);
@@ -51,11 +46,11 @@ public class ShopController {
     }
 
     @PostMapping("/add")
-    public ResultBean<ShopEntity> add(ShopEntity entity){
-        ShopEntity shopEntity = shopService.save(entity);
-        ResultBean<ShopEntity> resultBean = new ResultBean<>();
+    public ResultBean<Shop> add(Shop entity){
+        Shop shop = shopService.save(entity);
+        ResultBean<Shop> resultBean = new ResultBean<>();
         resultBean.setCode(0);
-        resultBean.setData(shopEntity);
+        resultBean.setData(shop);
         resultBean.setMessage("添加成功！");
         return resultBean;
     }
@@ -74,9 +69,9 @@ public class ShopController {
     }
 
     @PostMapping("/update")
-    public ResultBean<ShopEntity> update(ShopEntity entity){
-        ShopEntity shopEntity = shopService.save(entity);
-        ResultBean<ShopEntity> resultBean = new ResultBean<>(0, "更新成功", shopEntity);
+    public ResultBean<Shop> update(Shop entity){
+        Shop shop = shopService.save(entity);
+        ResultBean<Shop> resultBean = new ResultBean<>(0, "更新成功", shop);
         return resultBean;
     }
 
