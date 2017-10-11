@@ -3,6 +3,8 @@ package com.jewelry.admin.controller;
 import com.jewelry.admin.model.ResultBean;
 import com.jewelry.core.entity.Administrator;
 import com.jewelry.core.service.AdministratorService;
+import com.jewelry.core.utils.MD5Utils;
+import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,12 +14,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 
 @Controller
 public class AdminController {
+
+    private RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('a', 'z').build();
 
     @Autowired
     private AdministratorService administratorService;
@@ -32,23 +37,29 @@ public class AdminController {
     }
 
     @GetMapping("/login")
-    public String login(HttpServletRequest request){
+    public ModelAndView login(HttpServletRequest request){
         Administrator administrator = (Administrator) request.getSession().getAttribute("current_administrator");
         if(administrator != null){
-            return "redirect:/index";
+            return new ModelAndView("redirect:/index");
         }
-        return "login";
+        String random = generator.generate(6);
+        request.getSession().setAttribute("login_str", random);
+        return new ModelAndView("login").addObject("code", random);
     }
 
     @PostMapping("/logining")
     @ResponseBody
     public ResultBean logining(HttpServletRequest request, String account, String password){
         ResultBean resultBean;
-        Administrator administrator = administratorService.findByAccountAndPassword(account, password);
-        if(administrator == null){
+        //password = MD5(MD5(password + account) + code)，这个操作在客户端中完成
+        Administrator administrator = administratorService.findByAccount(account);
+        if(administrator == null) {
             resultBean = new ResultBean(-1, "账号或密码错误");
+        }else if(!password.equals(MD5Utils.hash(administrator.getPassword() + request.getSession().getAttribute("login_str")))){
+            resultBean = new ResultBean(-2, "账号或密码错误");
         } else {
             request.getSession().setAttribute("current_administrator", administrator);
+            request.getSession().removeAttribute("login_str");
             resultBean = new ResultBean(0, "登录成功");
         }
         return resultBean;
@@ -71,9 +82,13 @@ public class AdminController {
     @PostMapping("/admin/add")
     @ResponseBody
     public ResultBean<Administrator> addAdmin(String account, String password, String name){
+        Administrator byAccount = administratorService.findByAccount(account);
+        if(byAccount != null){
+            return new ResultBean<>(-1, "账号已存在");
+        }
         Administrator administrator = new Administrator();
         administrator.setAccount(account);
-        administrator.setPassword(password);
+        administrator.setPassword(MD5Utils.hash(password + account));
         administrator.setName(name);
         administrator.setCreateTime(new Timestamp(System.currentTimeMillis()));
         Administrator admin = administratorService.save(administrator);

@@ -51,4 +51,10 @@ public class AdministratorServiceImpl implements AdministratorService {
         List<Administrator> list = administratorRepository.findByAccountAndPassword(account, password);
         return list.isEmpty() ? null : list.get(0);
     }
+
+    @Override
+    public Administrator findByAccount(String account) {
+        List<Administrator> list = administratorRepository.findByAccount(account);
+        return list.isEmpty() ? null : list.get(0);
+    }
 }

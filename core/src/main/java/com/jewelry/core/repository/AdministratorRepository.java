@@ -8,4 +8,6 @@ import java.util.List;
 public interface AdministratorRepository extends JpaRepository<Administrator, Integer> {
 
     List<Administrator> findByAccountAndPassword(String account, String password);
+
+    List<Administrator> findByAccount(String account);
 }
