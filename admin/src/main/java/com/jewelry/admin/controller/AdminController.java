@@ -1,5 +1,6 @@
 package com.jewelry.admin.controller;
 
+import com.jewelry.admin.config.Constants;
 import com.jewelry.admin.model.ResultBean;
 import com.jewelry.core.entity.Administrator;
 import com.jewelry.core.service.AdministratorService;
@@ -29,7 +30,7 @@ public class AdminController {
 
     @GetMapping(value = {"", "/", "/index"})
     public String index(HttpServletRequest request){
-        Administrator administrator = (Administrator) request.getSession().getAttribute("current_administrator");
+        Administrator administrator = (Administrator) request.getSession().getAttribute(Constants.SESSION_ADMIN);
         if(administrator == null){
             return "redirect:/login";
         }
@@ -38,12 +39,12 @@ public class AdminController {
 
     @GetMapping("/login")
     public ModelAndView login(HttpServletRequest request){
-        Administrator administrator = (Administrator) request.getSession().getAttribute("current_administrator");
+        Administrator administrator = (Administrator) request.getSession().getAttribute(Constants.SESSION_ADMIN);
         if(administrator != null){
             return new ModelAndView("redirect:/index");
         }
         String random = generator.generate(6);
-        request.getSession().setAttribute("login_str", random);
+        request.getSession().setAttribute(Constants.SESSION_LOGIN_CODE, random);
         return new ModelAndView("login").addObject("code", random);
     }
 
@@ -55,11 +56,11 @@ public class AdminController {
         Administrator administrator = administratorService.findByAccount(account);
         if(administrator == null) {
             resultBean = new ResultBean(-1, "账号或密码错误");
-        }else if(!password.equals(MD5Utils.hash(administrator.getPassword() + request.getSession().getAttribute("login_str")))){
+        }else if(!password.equals(MD5Utils.hash(administrator.getPassword() + request.getSession().getAttribute(Constants.SESSION_LOGIN_CODE)))){
             resultBean = new ResultBean(-2, "账号或密码错误");
         } else {
-            request.getSession().setAttribute("current_administrator", administrator);
-            request.getSession().removeAttribute("login_str");
+            request.getSession().setAttribute(Constants.SESSION_ADMIN, administrator);
+            request.getSession().removeAttribute(Constants.SESSION_LOGIN_CODE);
             resultBean = new ResultBean(0, "登录成功");
         }
         return resultBean;
