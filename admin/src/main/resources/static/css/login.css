@@ -1,0 +1,16 @@
+.login-panel {
+    text-align: center;
+}
+
+.login-btn {
+    text-align: center;
+}
+
+.btn-primary {
+    width: 60%;
+}
+
+.login-message {
+    display: none;
+    margin-left: 10px;
+}

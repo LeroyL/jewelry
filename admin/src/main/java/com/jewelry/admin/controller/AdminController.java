@@ -56,7 +56,7 @@ public class AdminController {
         Administrator administrator = administratorService.findByAccount(account);
         if(administrator == null) {
             resultBean = new ResultBean(-1, "账号或密码错误");
-        }else if(!password.equals(MD5Utils.hash(administrator.getPassword() + request.getSession().getAttribute(Constants.SESSION_LOGIN_CODE)))){
+        }else if(!password.toUpperCase().equals(MD5Utils.hash(administrator.getPassword() + request.getSession().getAttribute(Constants.SESSION_LOGIN_CODE)))){
             resultBean = new ResultBean(-2, "账号或密码错误");
         } else {
             request.getSession().setAttribute(Constants.SESSION_ADMIN, administrator);
