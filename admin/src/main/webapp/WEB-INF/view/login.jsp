@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>登录 - 管理中心</title>
     <%@include file="common/header.jsp"%>
     <link href="${ctx}/static/css/login.css" rel="stylesheet" />
 </head>

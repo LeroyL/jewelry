@@ -8,19 +8,26 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by lier on 2017/9/30.
  */
-@RestController
+@Controller
 @RequestMapping("/shop")
 public class ShopController {
 
     @Autowired
     private ShopService shopService;
 
+    @GetMapping(value = {"", "/"})
+    public String index(){
+        return "index";
+    }
+
     @GetMapping("/findOne")
+    @ResponseBody
     public ResultBean<Shop> get(int id){
         Shop shop = shopService.findOne(id);
         ResultBean<Shop> resultBean = new ResultBean<>();
@@ -36,7 +43,8 @@ public class ShopController {
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<Shop>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+    @ResponseBody
+    public ResultBean<Page<Shop>> findAll(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
         Page<Shop> entityPage = shopService.findAll(pageable);
         ResultBean<Page<Shop>> resultBean = new ResultBean<>();
         resultBean.setCode(0);
@@ -46,6 +54,7 @@ public class ShopController {
     }
 
     @PostMapping("/add")
+    @ResponseBody
     public ResultBean<Shop> add(Shop entity){
         Shop shop = shopService.save(entity);
         ResultBean<Shop> resultBean = new ResultBean<>();
@@ -56,6 +65,7 @@ public class ShopController {
     }
 
     @PostMapping("/delete")
+    @ResponseBody
     public ResultBean delete(int id){
         int delResult = shopService.delete(id);
         ResultBean resultBean = new ResultBean();
@@ -69,6 +79,7 @@ public class ShopController {
     }
 
     @PostMapping("/update")
+    @ResponseBody
     public ResultBean<Shop> update(Shop entity){
         Shop shop = shopService.save(entity);
         ResultBean<Shop> resultBean = new ResultBean<>(0, "更新成功", shop);

@@ -8,30 +8,33 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li>
-                <a href="${ctx}/shop" class="active-menu"><i class="fa fa-menu-shop"></i>店铺管理</a>
+                <a href="${ctx}/index" class="menu-index"><i class="fa fa-menu-shop"></i>店铺管理</a>
+            </li>
+            <li>
+                <a href="${ctx}/shop" class="menu-shop"><i class="fa fa-menu-shop"></i>店铺管理</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-menu-product"></i>产品管理</a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="${ctx}/productType">类目管理</a>
+                        <a href="${ctx}/productType" class="menu-productType">类目管理</a>
                     </li>
                     <li>
-                        <a href="${ctx}/product">产品管理</a>
+                        <a href="${ctx}/product" class="menu-product">产品管理</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="${ctx}/good"><i class="fa fa-menu-good"></i>商品管理</a>
+                <a href="${ctx}/good" class="menu-good"><i class="fa fa-menu-good"></i>商品管理</a>
             </li>
             <li>
-                <a href="${ctx}/order"><i class="fa fa-menu-order"></i>订单管理</a>
+                <a href="${ctx}/order" class="menu-order"><i class="fa fa-menu-order"></i>订单管理</a>
             </li>
             <li>
-                <a href="${ctx}/user"><i class="fa fa-menu-user"></i>用户管理</a>
+                <a href="${ctx}/user" class="menu-user"><i class="fa fa-menu-user"></i>用户管理</a>
             </li>
             <li>
-                <a href="${ctx}/bill"><i class="fa fa-menu-bill"></i>账单管理</a>
+                <a href="${ctx}/bill" class="menu-bill"><i class="fa fa-menu-bill"></i>账单管理</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-menu-system"></i>系统管理<span class="fa arrow"></span></a>
