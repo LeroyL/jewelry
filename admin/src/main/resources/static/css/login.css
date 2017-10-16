@@ -1,5 +1,6 @@
 .login-panel {
-    text-align: center;
+    width: 40%;
+    margin: 100px auto;
 }
 
 .login-btn {

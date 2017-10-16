@@ -13,7 +13,7 @@
     <link href="${ctx}/static/css/login.css" rel="stylesheet" />
 </head>
 <body>
-<div id="wrapper login-panel">
+<div id="wrapper login-panel" class="login-panel">
     <form role="form">
         <div class="form-group">
             <input class="form-control" placeholder="请输入用户名" id="account">
@@ -34,6 +34,7 @@
     var ctx = '${ctx}';
 </script>
 <script src="${ctx}/static/assets/js/jquery-1.10.2.js"></script>
+<script src="${ctx}/static/js/login-helper.js"></script>
 <script src="${ctx}/static/js/login.js"></script>
 </body>
 </html>

@@ -34,6 +34,11 @@ public class MD5Utils {
             }
             buf.append(Long.toString((long) (bytes[i] & 255), 16));
         }
-        return buf.toString().toUpperCase();
+        return buf.toString();
+    }
+
+    public static void main(String[] args) {
+        String message = "123456admin";
+        System.out.println(MD5Utils.hash(message));
     }
 }

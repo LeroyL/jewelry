@@ -61,12 +61,12 @@ function login() {
 }
 
 function alertMessage(message) {
-    $('.login-message a').html(message);
+    $('.login-message label').text(message);
     $('.login-message').show();
     flag = 0;
 }
 
 function clearMessage() {
-    $('.login-message a').html("");
+    $('.login-message label').text("");
     $('.login-message').hide();
 }
