@@ -23,7 +23,7 @@ public class ShopController {
 
     @GetMapping(value = {"", "/"})
     public String index(){
-        return "index";
+        return "shop/index";
     }
 
     @GetMapping("/findOne")

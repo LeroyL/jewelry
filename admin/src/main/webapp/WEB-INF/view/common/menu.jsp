@@ -8,7 +8,7 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li>
-                <a href="${ctx}/index" class="menu-index"><i class="fa fa-menu-shop"></i>店铺管理</a>
+                <a href="${ctx}/index" class="menu-index"><i class="fa fa-menu-shop"></i>首页</a>
             </li>
             <li>
                 <a href="${ctx}/shop" class="menu-shop"><i class="fa fa-menu-shop"></i>店铺管理</a>
