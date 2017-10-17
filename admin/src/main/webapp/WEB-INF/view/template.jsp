@@ -20,7 +20,7 @@
 <div id="page-wrapper">
     <div class="header">
         <!-- content header -->
-        <div id="content-header"></div>
+        <div class="page-header"></div>
     </div>
     <div id="page-inner">
         <!-- content -->

@@ -1,0 +1,8 @@
+td > img {
+    max-height: 40px;
+}
+
+.row p {
+    font-size: 14px;
+    padding-top: 10px;
+}

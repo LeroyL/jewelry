@@ -12,24 +12,38 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <table class="table table-striped table-hover" id="dataTables-example">
                 <thead>
                 <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>序号</th>
+                    <th>店铺名称</th>
+                    <th>店铺图标</th>
+                    <th>店铺主人</th>
+                    <th>店铺开通时间</th>
+                    <th>店铺状态</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Trident</td>
-                    <td>Internet Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">X</td>
-                </tr>
+                <%--<c:if test="${shops.content.size > 0}">--%>
+                    <%----%>
+                <%--</c:if>--%>
+                <c:forEach items="${shops.content}" var="shop" varStatus="status">
+                    <tr>
+                        <td>${status.index + 1}</td>
+                        <td>${shop.title}</td>
+                        <td><img src="${shop.logo}"></td>
+                        <td>${shop.ownerId}</td>
+                        <td>${shop.createTime}</td>
+                        <td>${shop.status}</td>
+                        <td>
+                            <a href="${ctx}/shop/findOne?id=${shop.id}&oper=show" class="btn btn-info btn-sm">查看</a>
+                            <a href="${ctx}/shop/findOne?id=${shop.id}&oper=edit" class="btn btn-primary btn-sm">编辑</a>
+                            <a href="#" class="btn btn-danger btn-sm">删除</a>
+                                <%--<a href="#" class="btn btn-success btn-sm">success</a>--%>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

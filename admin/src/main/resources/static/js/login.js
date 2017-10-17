@@ -56,7 +56,7 @@ function login() {
             alertMessage(data.message);
         }
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-        alertMessage(data.message);
+        alertMessage("登录失败");
     });
 }
 

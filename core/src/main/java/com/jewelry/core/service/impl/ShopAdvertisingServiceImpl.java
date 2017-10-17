@@ -48,4 +48,9 @@ public class ShopAdvertisingServiceImpl implements ShopAdvertisingService {
     public List<ShopAdvertising> batchSave(List<ShopAdvertising> entities) {
         return shopAdvertisingRepository.save(entities);
     }
+
+    @Override
+    public List<ShopAdvertising> findByShopId(int id) {
+        return shopAdvertisingRepository.findByShopId(id);
+    }
 }

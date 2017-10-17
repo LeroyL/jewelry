@@ -4,4 +4,7 @@
   Time: 14:34
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<footer><p>管理中心</p></footer>
+<div class="footer">
+    <footer><p>Copy Right :</p></footer>
+</div>
+

@@ -13,3 +13,6 @@
 <script src="${ctx}/static/assets/js/jquery.metisMenu.js"></script>
 <!-- Custom Js -->
 <script src="${ctx}/static/assets/js/custom-scripts.js"></script>
+<script>
+    var ctx = '${ctx}';
+</script>
