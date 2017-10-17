@@ -78,5 +78,10 @@
     </div>
 </div>
 <%@include file="common/script.jsp" %>
+<script>
+    (function ($) {
+        $('.menu-index').addClass('active-menu');
+    }(jQuery));
+</script>
 </body>
 </html>

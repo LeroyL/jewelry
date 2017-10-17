@@ -26,14 +26,12 @@
         <div class="row">
             <div class="col-md-3">
                 <p class="text-right">店铺名称</p>
-                <p class="text-right">店铺主人</p>
                 <p class="text-right">店铺开通时间</p>
                 <p class="text-right">店铺状态</p>
                 <p class="text-right">店铺LOGO</p>
             </div>
             <div class="col-md-9">
                 <p class="text-left">${shop.title}</p>
-                <p class="text-left">${owner.name}</p>
                 <p class="text-left">${shop.createTime}</p>
                 <p class="text-left">${shop.status}</p>
                 <p class="text-left">
