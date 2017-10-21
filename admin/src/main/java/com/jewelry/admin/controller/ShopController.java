@@ -60,7 +60,12 @@ public class ShopController {
         return new ModelAndView("shop/list").addObject("shops", entityPage);
     }
 
-    @PostMapping("/add")
+    @GetMapping("/add")
+    public String add(){
+        return "shop/add";
+    }
+
+    @PostMapping("/save")
     @ResponseBody
     public ResultBean<Shop> add(Shop entity) {
         Shop shop = shopService.save(entity);

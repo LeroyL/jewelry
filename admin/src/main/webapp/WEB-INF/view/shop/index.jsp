@@ -21,7 +21,10 @@
 <div id="page-wrapper">
     <div class="header">
         <!-- content header -->
-        <div class="page-header">店铺管理</div>
+        <h1 class="page-header">
+            店铺管理
+        </h1>
+        <p><a href="${ctx}/shop/add" class="btn btn-primary btn-sm">添加店铺</a></p>
     </div>
 
     <div id="page-inner">

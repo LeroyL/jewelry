@@ -19,7 +19,7 @@
 <div id="page-wrapper">
     <div class="header">
         <!-- content header -->
-        <div class="page-header">店铺查看</div>
+        <h1 class="page-header">店铺查看</h1>
     </div>
     <div id="page-inner">
         <!-- content -->

@@ -41,23 +41,33 @@ function login() {
     var temp = MD5(password + account);
     temp = MD5(temp + code);
     password = temp;
-    $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: ctx + "/logining",
-        data: {
-            account: account,
-            password: password
+    $.post(ctx + "/logining",
+        {account: account,password: password},
+        function (data) {
+            if(data.code == 0){
+                window.location.href = ctx + "/index";
+            } else {
+                alertMessage(data.message);
+            }
         }
-    }).success(function (data) {
-        if(data.code == 0){
-            window.location.href = ctx + "/index";
-        } else {
-            alertMessage(data.message);
-        }
-    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-        alertMessage("登录失败");
-    });
+    );
+    // $.ajax({
+    //     type: 'POST',
+    //     dataType: 'json',
+    //     url: ctx + "/logining",
+    //     data: {
+    //         account: account,
+    //         password: password
+    //     }
+    // }).success(function (data) {
+    //     if(data.code == 0){
+    //         window.location.href = ctx + "/index";
+    //     } else {
+    //         alertMessage(data.message);
+    //     }
+    // }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+    //     alertMessage("登录失败");
+    // });
 }
 
 function alertMessage(message) {

@@ -11,7 +11,15 @@
                 <a href="${ctx}/index" class="menu-index"><i class="fa fa-menu-shop"></i>首页</a>
             </li>
             <li>
-                <a href="${ctx}/shop" class="menu-shop"><i class="fa fa-menu-shop"></i>店铺管理</a>
+                <a href="#"><i class="fa fa-menu-shop"></i>店铺管理</a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="${ctx}/shop" class="menu-shop">店铺管理</a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-shop-owner">店主管理</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="#"><i class="fa fa-menu-product"></i>产品管理</a>
@@ -48,20 +56,6 @@
                     <li>
                         <a href="${ctx}/commission">佣金管理</a>
                     </li>
-                    <%--<li>--%>
-                        <%--<a href="#">Second Level Link<span class="fa arrow"></span></a>--%>
-                        <%--<ul class="nav nav-third-level">--%>
-                            <%--<li>--%>
-                                <%--<a href="#">Third Level Link</a>--%>
-                            <%--</li>--%>
-                            <%--<li>--%>
-                                <%--<a href="#">Third Level Link</a>--%>
-                            <%--</li>--%>
-                            <%--<li>--%>
-                                <%--<a href="#">Third Level Link</a>--%>
-                            <%--</li>--%>
-                        <%--</ul>--%>
-                    <%--</li>--%>
                 </ul>
             </li>
         </ul>

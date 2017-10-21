@@ -4,6 +4,7 @@ import com.jewelry.admin.config.Constants;
 import com.jewelry.admin.model.ResultBean;
 import com.jewelry.core.entity.Administrator;
 import com.jewelry.core.service.AdministratorService;
+import com.jewelry.core.utils.FileUploadUtil;
 import com.jewelry.core.utils.MD5Utils;
 import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,18 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -110,5 +118,36 @@ public class AdminController {
         int code = result;
         String message = (code == 0 ? "删除成功" : "删除失败");
         return new ResultBean(code, message);
+    }
+
+    @PostMapping("/file/upload")
+    @ResponseBody
+    public ResultBean fileUpload(HttpServletRequest request, @RequestParam MultipartFile[] files){
+        if(files == null || files.length == 0){
+            return new ResultBean(-1, "未检测到文件!");
+        }
+        String host = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+        List<String> fileList = new ArrayList<>();
+        for (int i = 0; i < files.length; i++) {
+            MultipartFile file = files[i];
+            String sourceName = file.getOriginalFilename();
+            String prefix = request.getSession().getServletContext().getRealPath("") + "/WEB-INF/classes/static/upload/";
+            String dir = FileUploadUtil.getFileDir(prefix);
+            File fileDir = new File(dir);
+            if(!fileDir.exists()){
+                fileDir.mkdirs();
+            }
+            String fileName = dir + FileUploadUtil.getFileName(sourceName);
+            String uri = host + fileName.substring(fileName.indexOf("/static/upload/"));
+            File dist = new File(fileName);
+            try {
+                file.transferTo(dist);
+                fileList.add(uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return new ResultBean(-2, "保存文件" + sourceName + "失败!");
+            }
+        }
+        return new ResultBean(0, "文件上传成功", fileList);
     }
 }

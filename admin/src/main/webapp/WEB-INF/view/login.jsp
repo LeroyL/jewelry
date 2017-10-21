@@ -33,7 +33,7 @@
 <script>
     var ctx = '${ctx}';
 </script>
-<script src="${ctx}/static/assets/js/jquery-1.10.2.js"></script>
+<script src="${ctx}/static/assets/js/jquery-3.2.1.min.js"></script>
 <script src="${ctx}/static/js/login-helper.js"></script>
 <script src="${ctx}/static/js/login.js"></script>
 </body>

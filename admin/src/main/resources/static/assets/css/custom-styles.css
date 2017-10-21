@@ -742,4 +742,11 @@ ul.dropdown-menu.dropdown-messages li a div {
     }
 }
 
+.input-addon-span {
+    width: 100px;
+}
+
+#page-wrapper .header p {
+    padding: 10px 0 0 15px;
+}
 

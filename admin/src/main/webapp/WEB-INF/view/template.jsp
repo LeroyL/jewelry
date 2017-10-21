@@ -20,7 +20,9 @@
 <div id="page-wrapper">
     <div class="header">
         <!-- content header -->
-        <div class="page-header"></div>
+        <h1 class="page-header">
+            页头
+        </h1>
     </div>
     <div id="page-inner">
         <!-- content -->

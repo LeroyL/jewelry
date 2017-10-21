@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- JS Scripts-->
 <!-- jQuery Js -->
-<script src="${ctx}/static/assets/js/jquery-1.10.2.js"></script>
+<script src="${ctx}/static/assets/js/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="${ctx}/static/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
