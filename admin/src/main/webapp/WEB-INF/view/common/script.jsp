@@ -7,6 +7,8 @@
 <!-- JS Scripts-->
 <!-- jQuery Js -->
 <script src="${ctx}/static/assets/js/jquery-3.2.1.min.js"></script>
+<!-- popper Js -->
+<script src="${ctx}/static/assets/js/umd/popper.min.js"></script>
 <!-- Bootstrap Js -->
 <script src="${ctx}/static/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->

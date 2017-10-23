@@ -51,23 +51,6 @@ function login() {
             }
         }
     );
-    // $.ajax({
-    //     type: 'POST',
-    //     dataType: 'json',
-    //     url: ctx + "/logining",
-    //     data: {
-    //         account: account,
-    //         password: password
-    //     }
-    // }).success(function (data) {
-    //     if(data.code == 0){
-    //         window.location.href = ctx + "/index";
-    //     } else {
-    //         alertMessage(data.message);
-    //     }
-    // }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-    //     alertMessage("登录失败");
-    // });
 }
 
 function alertMessage(message) {

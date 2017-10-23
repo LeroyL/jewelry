@@ -10,6 +10,7 @@
     <%@include file="../common/header.jsp" %>
     <link href="${ctx}/static/assets/css/fileinput.min.css" rel="stylesheet"/>
     <link href="${ctx}/static/css/shop/shop.css" rel="stylesheet"/>
+    <link href="${ctx}/static/assets/bootstrap-select/bootstrap-select.min.css" rel="stylesheet"/>
 </head>
 <body>
 <!-- TOP -->
@@ -33,7 +34,9 @@
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon input-addon-span" id="basic-addon-owner">店主</span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon-owner" value="${owner.name}">
+                    <select class="form-control selectpicker" data-live-search="true" id="shop-owner">
+                        <option>${owner.name}</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-3"></div>
@@ -71,29 +74,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
-                <p class="text-right">店主姓名</p>
-                <p class="text-right">联系电话</p>
-                <p class="text-right">性别</p>
-                <p class="text-right">生日</p>
-                <p class="text-right">返利级别</p>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary" onclick="updateShop()">更新</button>
+                <a class="btn btn-info" href="${ctx}/shop">取消</a>
             </div>
-            <div class="col-md-9">
-                <p class="text-left">${owner.name}</p>
-                <p class="text-left">${owner.phone}</p>
-                <p class="text-left"><c:choose><c:when
-                        test="${owner.sex == 1}">男</c:when><c:otherwise>女</c:otherwise></c:choose></p>
-                <p class="text-left">${owner.birthday}</p>
-                <p class="text-left">${owner.level}</p>
-            </div>
+            <div class="col-md-4"></div>
         </div>
         <!-- FOOT -->
         <%@include file="../common/foot.jsp" %>
     </div>
 </div>
 <%@include file="../common/script.jsp" %>
-<script src="${ctx}/static/assets/js/fileinput.js"></script>
-<%--<script src="${ctx}/static/assets/js/fileinput.min.js"></script>--%>
+<script src="${ctx}/static/assets/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="${ctx}/static/assets/bootstrap-select/defaults-zh_CN.min.js"></script>
+
+<script src="${ctx}/static/assets/js/fileinput.min.js"></script>
 <script src="${ctx}/static/assets/js/fileinput_zh.js"></script>
 <script src="${ctx}/static/assets/js/jquery.form.min.js"></script>
 <script src="${ctx}/static/js/shop/shop.js"></script>

@@ -17,6 +17,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,11 +69,22 @@ public class ShopController {
 
     @PostMapping("/save")
     @ResponseBody
-    public ResultBean<Shop> add(Shop entity) {
-        Shop shop = shopService.save(entity);
-        ResultBean<Shop> resultBean = new ResultBean<>();
+    public ResultBean add(String shopName, int ownerId, String icon) {
+        Shop shop = new Shop();
+        shop.setTitle(shopName);
+        shop.setOwnerId(ownerId);
+        shop.setLogo(icon);
+        shop.setStatus(1);
+        shop.setCreateTime(new Timestamp(System.currentTimeMillis()));
+        ResultBean resultBean = new ResultBean<>();
+        try {
+            shopService.save(shop);
+        } catch (Exception e){
+            resultBean.setCode(-1);
+            resultBean.setMessage("保存失败：" + e.getMessage());
+            return resultBean;
+        }
         resultBean.setCode(0);
-        resultBean.setData(shop);
         resultBean.setMessage("添加成功！");
         return resultBean;
     }

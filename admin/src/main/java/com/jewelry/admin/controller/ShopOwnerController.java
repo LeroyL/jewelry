@@ -8,10 +8,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/shopOwner")
@@ -20,29 +22,31 @@ public class ShopOwnerController {
     @Autowired
     private ShopOwnerService shopOwnerService;
 
+    @GetMapping({"", "/"})
+    public String index(){
+        return "shop/owner/index";
+    }
+
     @GetMapping("/findOne")
-    public ResultBean<ShopOwner> get(int id){
+    public ModelAndView get(int id, String oper){
         ShopOwner shopOwner = shopOwnerService.findOne(id);
-        ResultBean<ShopOwner> resultBean = new ResultBean<>();
-        if(shopOwner != null){
-            resultBean.setCode(0);
-            resultBean.setData(shopOwner);
-            resultBean.setMessage("查询成功！");
-        } else {
-            resultBean.setCode(-1);
-            resultBean.setMessage("查无记录！");
+        ShopOwner agent = null;
+        if(shopOwner.getAgentShopOwnerId() != null){
+            agent = shopOwnerService.findOne(shopOwner.getAgentShopOwnerId());
         }
-        return resultBean;
+        String view;
+        if (!StringUtils.isEmpty(oper) && oper.equals("edit")) {
+            view = "shop/shopOwner/edit";
+        } else {
+            view = "shop/shopOwner/show";
+        }
+        return new ModelAndView(view).addObject("shopOwner", shopOwner).addObject("agent", agent);
     }
 
     @GetMapping("/findAll")
-    public ResultBean<Page<ShopOwner>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
+    public ModelAndView findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable pageable){
         Page<ShopOwner> entityPage = shopOwnerService.findAll(pageable);
-        ResultBean<Page<ShopOwner>> resultBean = new ResultBean<>();
-        resultBean.setCode(0);
-        resultBean.setMessage("查询结束！");
-        resultBean.setData(entityPage);
-        return resultBean;
+        return new ModelAndView("shop/owner/index").addObject("showOwners", entityPage);
     }
 
     @PostMapping("/add")

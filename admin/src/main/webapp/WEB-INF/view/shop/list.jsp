@@ -39,7 +39,7 @@
                         <td>
                             <a href="${ctx}/shop/findOne?id=${shop.id}&oper=show" class="btn btn-info btn-sm">查看</a>
                             <a href="${ctx}/shop/findOne?id=${shop.id}&oper=edit" class="btn btn-primary btn-sm">编辑</a>
-                            <a href="#" class="btn btn-danger btn-sm">删除</a>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteShop(${shop.id})">删除</button>
                                 <%--<a href="#" class="btn btn-success btn-sm">success</a>--%>
                         </td>
                     </tr>

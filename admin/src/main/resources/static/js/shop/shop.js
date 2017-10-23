@@ -16,25 +16,40 @@ function loadShopData(page, pageSize) {
             $("#content").html(data);
         }
     );
-    // $.ajax({
-    //     type: 'GET',
-    //     url: ctx + "/shop/findAll",
-    //     data: {
-    //         page: page,
-    //         size: pageSize
-    //     }
-    // }).success(function (data) {
-    //     $("#content").html(data);
-    // }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-    //     alert("请求失败");
-    // });
 }
 
 function deleteShop(shopId) {
-
+    var result = confirm("是否要删除该店铺？");
+    if(result == false){
+        return;
+    }
+    $.post(ctx + "/shop/delete", {id: shopId}, function (data) {
+        if(data.code == 0){
+            alert("删除成功");
+            window.location.href = ctx + "/shop";
+        } else {
+            alert(data.message);
+        }
+    });
 }
 
-function uploadImage(elementId) {
-
+function saveShop() {
+    var name = $("#shop-name").val();
+    var ownerId = $("#shop-owner").val();
+    var icon = $("#logo-upload-form-input").val();
+    $.post(ctx + "/shop/save",
+        {shopName: name, ownerId: ownerId, icon: icon},
+        function (data) {
+            if(data.code == 0){
+                alert("保存成功");
+                window.location.href = ctx + "/shop";
+            } else {
+                alert(data.message);
+            }
+        }
+    );
 }
 
+function updateShop() {
+    
+}
